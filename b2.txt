@@ -1,0 +1,23 @@
+create database quanlybanhang;
+use quanlybanhang;
+create table customer(
+cId int primary key,
+cName varchar(20),
+cAge int);
+create table Orders(
+oId int primary key,
+cId int, foreign key (cId) references customer (cId),
+oDate datetime,
+oTotalPrice double
+);
+create table oderDetail(
+oId int , foreign key (oId) references Orders(oId),
+pId int ,foreign key (pId) references product(pId),
+odQty int,
+primary key (oId, pId)
+);
+create table product(
+pId int primary key,
+pName varchar(25),
+pPrice double
+);
